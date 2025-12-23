@@ -1,40 +1,43 @@
-# Awesome Obsidian - Instruções para IA
+# Awesome Obsidian - AI Coding Instructions
 
-Este projeto é uma curadoria de plugins para o Obsidian, construído com Next.js 16, Drizzle ORM e Tailwind CSS 4.
+Curadoria de plugins para Obsidian com Next.js 16, Drizzle ORM e Tailwind CSS 4.
 
-## Arquitetura e Tecnologias
+## 🏗️ Architecture & Tech Stack
 
 - **Framework**: Next.js 16 (App Router) com `output: 'export'`.
-- **Estilização**: Tailwind CSS 4 (configurado via `@tailwindcss/postcss`).
-- **Banco de Dados**: Drizzle ORM com LibSQL (SQLite). Utilizado principalmente para o sistema de avaliações (ratings).
-- **Fonte de Dados**: Os plugins são buscados diretamente do repositório oficial do Obsidian via `src/lib/obsidian-api.ts`.
-- **Ícones**: Lucide React.
+  - **Importante**: O site é estático. Funcionalidades que exigem servidor (como Server Actions) só funcionam se o ambiente de deploy suportar ou se forem usadas apenas no build.
+- **Styling**: Tailwind CSS 4 (configurado via `@tailwindcss/postcss`).
+- **Database**: Drizzle ORM com LibSQL (Turso). Focado no sistema de ratings.
+- **i18n**: `next-intl` com roteamento por locale (`[locale]`). Mensagens em `messages/*.json`.
+- **Data Source**: Plugins buscados via GitHub API em `src/lib/obsidian-api.ts`.
 
-## Convenções de Código
+## 🎨 Coding Conventions
 
-### Componentes UI
+### UI Components
 - Localizados em `src/components/`.
-- Use Tailwind CSS 4 para estilização.
-- Prefira componentes funcionais e `lucide-react` para ícones.
-- Exemplo: [src/components/PluginCard.tsx](src/components/PluginCard.tsx).
+- Use Tailwind 4 e `lucide-react` para ícones.
+- **Padrão de Card**: Veja `src/components/PluginCard.tsx`.
+- **Client-side Logic**: Busca e paginação são feitas no cliente em `src/components/PluginList.tsx`.
 
-### Acesso a Dados e Banco de Dados
-- **Schema**: Definido em [src/db/schema.ts](src/db/schema.ts).
-- **Queries**: Queries complexas ou cacheadas devem ficar em `src/lib/db-queries.ts`.
-- **Server Actions**: Localizadas em `src/app/actions/`. Usadas para mutações como avaliações.
-- **Cache**: Utilize `unstable_cache` e `revalidateTag` para gerenciar o cache de dados do banco.
+### Data & State
+- **Schema**: `src/db/schema.ts`.
+- **Queries**: Centralizadas em `src/lib/db-queries.ts` usando `unstable_cache`.
+- **API Integration**: Lógica de fetch do Obsidian em `src/lib/obsidian-api.ts`.
+- **Server Actions**: `src/app/actions/` (ex: `rate.ts`). Note a limitação com `output: 'export'`.
 
-### Integração Obsidian
-- Toda a lógica de busca de plugins e estatísticas (downloads, stars) do GitHub do Obsidian deve residir em [src/lib/obsidian-api.ts](src/lib/obsidian-api.ts).
-- Utilize `unstable_cache` com `revalidate` (stale time) para gerenciar o cache dessas requisições externas.
+### i18n (Internationalization)
+- Use `useTranslations` no Client e `getTranslations` no Server.
+- Adicione novas chaves em `messages/en.json` e `messages/pt.json`.
+- Exemplo: `const t = useTranslations('PluginCard');`
 
-## Workflows Comuns
+## 🛠️ Critical Workflows
 
-- **Desenvolvimento**: `npm run dev`
-- **Banco de Dados**: Para atualizar o schema no banco local, use `npm run db:push`.
-- **Build**: `npm run build` gera uma exportação estática em `out/`.
+- **Dev**: `npm run dev`
+- **Database**: `npm run db:push` para sincronizar schema com Turso/SQLite local.
+- **Build**: `npm run build` gera exportação estática em `out/`.
 
-## Padrões Específicos
-- O projeto utiliza `next-themes` para suporte a tema escuro/claro.
-- A paginação e busca são feitas no lado do cliente em [src/components/PluginList.tsx](src/components/PluginList.tsx).
-- O arquivo [next.config.ts](next.config.ts) está configurado para `output: 'export'`, o que significa que o site é estático. Tenha cuidado ao adicionar funcionalidades que dependem estritamente de um servidor Node.js em runtime.
+## ⚠️ Project Specific Patterns
+
+- **Caching**: O projeto usa `unstable_cache` agressivamente para evitar rate limit da API do GitHub.
+- **Static Params**: `generateStaticParams` em `layout.tsx` é obrigatório para o export estático com i18n.
+- **Images**: Configurado com `unoptimized: true` no `next.config.ts` para compatibilidade com export estático.

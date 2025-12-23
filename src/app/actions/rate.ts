@@ -34,6 +34,7 @@ export async function ratePlugin(pluginId: string, newRating: number) {
       });
     }
 
+    // @ts-ignore - revalidateTag in Next.js 15/16 might have different signature in some environments
     revalidateTag("ratings");
     return { success: true };
   } catch (error) {

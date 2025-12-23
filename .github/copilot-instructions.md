@@ -26,6 +26,7 @@ Este projeto é uma curadoria de plugins para o Obsidian, construído com Next.j
 
 ### Integração Obsidian
 - Toda a lógica de busca de plugins e estatísticas (downloads, stars) do GitHub do Obsidian deve residir em [src/lib/obsidian-api.ts](src/lib/obsidian-api.ts).
+- Utilize `unstable_cache` com `revalidate` (stale time) para gerenciar o cache dessas requisições externas.
 
 ## Workflows Comuns
 

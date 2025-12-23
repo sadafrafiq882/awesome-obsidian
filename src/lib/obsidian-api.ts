@@ -6,6 +6,7 @@ export interface ObsidianPlugin {
   repo: string;
   downloads?: number;
   updated?: number;
+  stars?: number;
 }
 
 export async function getObsidianPlugins(): Promise<ObsidianPlugin[]> {
@@ -29,6 +30,7 @@ export async function getObsidianPlugins(): Promise<ObsidianPlugin[]> {
       ...plugin,
       downloads: stats[plugin.id]?.downloads || 0,
       updated: stats[plugin.id]?.updated || 0,
+      stars: stats[plugin.id]?.stars || 0,
     }));
   } catch (error) {
     console.error("Error fetching Obsidian plugins:", error);

@@ -10,6 +10,7 @@ interface PageProps {
   searchParams: Promise<{
     q?: string;
     page?: string;
+    sort?: string;
   }>;
 }
 
@@ -17,6 +18,7 @@ export default async function Home(props: PageProps) {
   const searchParams = await props.searchParams;
   const query = (searchParams?.q || '').toLowerCase();
   const currentPage = Number(searchParams?.page) || 1;
+  const sort = searchParams?.sort || 'newest';
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   // 1. Busca todos os plugins da API do Obsidian
@@ -31,10 +33,28 @@ export default async function Home(props: PageProps) {
     )
     : allPlugins;
 
-  // 3. Paginação local
-  const totalItems = filteredPlugins.length;
+  // 3. Ordenação
+  const sortedPlugins = [...filteredPlugins].sort((a, b) => {
+    if (sort === 'name_asc') {
+      return a.name.localeCompare(b.name);
+    }
+    if (sort === 'name_desc') {
+      return b.name.localeCompare(a.name);
+    }
+    if (sort === 'downloads') {
+      return (b.downloads || 0) - (a.downloads || 0);
+    }
+    if (sort === 'stars') {
+      return (b.stars || 0) - (a.stars || 0);
+    }
+    // newest (padrão) - ordena por timestamp de atualização
+    return (b.updated || 0) - (a.updated || 0);
+  });
+
+  // 4. Paginação local
+  const totalItems = sortedPlugins.length;
   const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
-  const data = filteredPlugins.slice(offset, offset + ITEMS_PER_PAGE);
+  const data = sortedPlugins.slice(offset, offset + ITEMS_PER_PAGE);
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-200">

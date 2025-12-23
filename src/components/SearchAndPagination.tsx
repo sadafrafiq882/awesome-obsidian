@@ -1,6 +1,6 @@
 'use client';
 
-import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, ChevronLeft, ChevronRight, ArrowUpDown } from 'lucide-react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce'; // Recomendo instalar: npm i use-debounce ou implementar manual
 
@@ -10,12 +10,13 @@ export function SearchAndPagination({ totalPages }: { totalPages: number }) {
   const { replace } = useRouter();
 
   const currentPage = Number(searchParams.get('page')) || 1;
+  const currentSort = searchParams.get('sort') || 'newest';
 
   // Atualiza a URL com o termo de busca (Debounce de 300ms)
   const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', '1'); // Reseta para pág 1 ao buscar
-    
+
     if (term) {
       params.set('q', term);
     } else {
@@ -24,11 +25,19 @@ export function SearchAndPagination({ totalPages }: { totalPages: number }) {
     replace(`${pathname}?${params.toString()}`);
   }, 300);
 
+  // Atualiza a ordenação
+  const handleSort = (sort: string) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('page', '1'); // Reseta para pág 1 ao ordenar
+    params.set('sort', sort);
+    replace(`${pathname}?${params.toString()}`);
+  };
+
   // Navegação de páginas
   const handlePageChange = (direction: 'next' | 'prev') => {
     const params = new URLSearchParams(searchParams);
     const newPage = direction === 'next' ? currentPage + 1 : currentPage - 1;
-    
+
     if (newPage >= 1 && newPage <= totalPages) {
       params.set('page', newPage.toString());
       replace(`${pathname}?${params.toString()}`);
@@ -50,6 +59,30 @@ export function SearchAndPagination({ totalPages }: { totalPages: number }) {
           onChange={(e) => handleSearch(e.target.value)}
           defaultValue={searchParams.get('q')?.toString()}
         />
+      </div>
+
+      {/* Ordenação */}
+      <div className="relative flex items-center gap-2">
+        <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+          <ArrowUpDown className="h-4 w-4 text-slate-500" />
+        </div>
+        <select
+          id="sort"
+          className="block w-full appearance-none rounded-lg border border-slate-700 bg-slate-900 py-3 pl-10 pr-8 text-sm text-slate-200 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 md:w-48"
+          value={currentSort}
+          onChange={(e) => handleSort(e.target.value)}
+        >
+          <option value="newest">Mais Recentes</option>
+          <option value="downloads">Mais Downloads</option>
+          <option value="stars">Mais Estrelas</option>
+          <option value="name_asc">Nome (A-Z)</option>
+          <option value="name_desc">Nome (Z-A)</option>
+        </select>
+        <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+          <svg className="h-4 w-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
       </div>
 
       {/* Controles de Paginação */}

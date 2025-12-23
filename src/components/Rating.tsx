@@ -21,16 +21,20 @@ export function Rating({ itemId, itemType, initialAverage, initialTotal }: Ratin
 
   const handleRate = async (value: number) => {
     if (isRating) return;
+    console.log(`[Rating] Iniciando avaliação de ${itemType}: ${itemId} com valor ${value}`);
     setIsRating(true);
 
     const result = await rateItem(itemId, itemType, value);
 
     if (result.success) {
+      console.log(`[Rating] Avaliação salva com sucesso para ${itemId}`);
       // Optimistic update
       const newTotal = total + 1;
       const newAverage = (rating * total + value) / newTotal;
       setRating(newAverage);
       setTotal(newTotal);
+    } else {
+      console.error(`[Rating] Erro ao salvar avaliação:`, result.error);
     }
 
     setIsRating(false);
@@ -52,8 +56,8 @@ export function Rating({ itemId, itemType, initialAverage, initialTotal }: Ratin
             <Star
               size={16}
               className={`${(hover || Math.round(rating)) >= star
-                  ? 'fill-yellow-400 text-yellow-400'
-                  : 'text-muted-foreground/30'
+                ? 'fill-yellow-400 text-yellow-400'
+                : 'text-muted-foreground/30'
                 } transition-colors`}
             />
           </button>

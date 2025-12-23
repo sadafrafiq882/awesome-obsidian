@@ -12,15 +12,21 @@ const devFormat = printf(({ level, message, timestamp, requestId, ...metadata })
 });
 
 export const logger = winston.createLogger({
-  level: process.env.LOG_LEVEL || 'info',
+  level: process.env.LOG_LEVEL || 'debug', // Alterado para debug para garantir captura
   format: combine(
     timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-    process.env.NODE_ENV === 'development' ? combine(colorize(), devFormat) : json()
+    process.env.NODE_ENV === 'development' 
+      ? combine(colorize(), devFormat) 
+      : json()
   ),
   transports: [
-    new winston.transports.Console(),
+    new winston.transports.Console({
+      handleExceptions: true,
+    }),
   ],
 });
+
+logger.info("Logger inicializado", { env: process.env.NODE_ENV });
 
 // Helper to get a logger with current request context
 export async function getRequestLogger(context: Record<string, any> = {}) {

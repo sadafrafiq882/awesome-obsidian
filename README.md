@@ -1,106 +1,106 @@
 # Awesome Obsidian
 
-Uma curadoria moderna e performática de plugins para o Obsidian, permitindo explorar, buscar e avaliar as melhores extensões da comunidade.
+A modern and high-performance curated list of Obsidian plugins, allowing you to explore, search, and rate the best community extensions.
 
-## 🚀 Tecnologia Stack
+## 🚀 Tech Stack
 
-O projeto utiliza as tecnologias mais recentes do ecossistema web para garantir performance e uma excelente experiência de desenvolvedor.
+The project uses the latest technologies in the web ecosystem to ensure performance and an excellent developer experience.
 
 - **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
-- **Linguagem**: [TypeScript](https://www.typescriptlang.org/)
-- **Estilização**: [Tailwind CSS 4](https://tailwindcss.com/) (via `@tailwindcss/postcss`)
-- **Banco de Dados**: [Drizzle ORM](https://orm.drizzle.team/) com [LibSQL](https://github.com/tursodatabase/libsql) (SQLite/Turso)
-- **Ícones**: [Lucide React](https://lucide.dev/)
-- **Gerenciamento de Tema**: `next-themes`
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) (via `@tailwindcss/postcss`)
+- **Database**: [Drizzle ORM](https://orm.drizzle.team/) with [LibSQL](https://github.com/tursodatabase/libsql) (SQLite/Turso)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Theme Management**: `next-themes`
 
-## 🏗️ Arquitetura do Projeto
+## 🏗️ Project Architecture
 
-O Awesome Obsidian foi projetado para ser rápido e eficiente:
+Awesome Obsidian was designed to be fast and efficient:
 
-- **Static Export**: Configurado com `output: 'export'`, gerando um site estático que pode ser hospedado em qualquer lugar.
-- **Integração com API do Obsidian**: Os dados dos plugins são buscados diretamente do repositório oficial `obsidianmd/obsidian-releases`.
-- **Cache Inteligente**: Utiliza `unstable_cache` do Next.js para gerenciar o cache das requisições externas e do banco de dados.
-- **Busca no Cliente**: A filtragem e paginação dos plugins ocorrem no lado do cliente para uma resposta instantânea.
+- **Static Export**: Configured with `output: 'export'`, generating a static site that can be hosted anywhere.
+- **Obsidian API Integration**: Plugin data is fetched directly from the official `obsidianmd/obsidian-releases` repository.
+- **Smart Caching**: Uses Next.js `unstable_cache` to manage caching for external requests and the database.
+- **Client-Side Search**: Plugin filtering and pagination occur on the client side for an instant response.
 
-## 🛠️ Começando
+## 🛠️ Getting Started
 
-### Pré-requisitos
+### Prerequisites
 
 - Node.js 20+
-- npm ou yarn
+- npm or yarn
 
-### Instalação
+### Installation
 
-1. Clone o repositório:
+1. Clone the repository:
    ```bash
    git clone https://github.com/fazedordecodigo/awesome-obsidian.git
    cd awesome-obsidian
    ```
 
-2. Instale as dependências:
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-3. Configure as variáveis de ambiente:
-   Crie um arquivo `.env` baseado no `.env.example` e adicione suas credenciais do Turso (se necessário para o sistema de ratings).
+3. Configure environment variables:
+   Create a `.env` file based on `.env.example` and add your Turso credentials (if necessary for the rating system).
 
-4. Inicialize o banco de dados:
+4. Initialize the database:
    ```bash
    npm run db:push
    ```
 
-5. Inicie o servidor de desenvolvimento:
+5. Start the development server:
    ```bash
    npm run dev
    ```
 
-## 📂 Estrutura do Projeto
+## 📂 Project Structure
 
 ```text
 src/
-├── app/            # Rotas, layouts e Server Actions
-├── components/     # Componentes UI reutilizáveis
-├── db/             # Configuração do Drizzle e Schema
-└── lib/            # Lógica de API, queries e utilitários
+├── app/            # Routes, layouts, and Server Actions
+├── components/     # Reusable UI components
+├── db/             # Drizzle configuration and Schema
+└── lib/            # API logic, queries, and utilities
 ```
 
-## ✨ Principais Funcionalidades
+## ✨ Key Features
 
-- **Exploração de Plugins**: Lista completa de plugins da comunidade Obsidian.
-- **Busca em Tempo Real**: Filtre plugins por nome, autor ou descrição.
-- **Estatísticas**: Visualize downloads, estrelas e data de atualização.
-- **Sistema de Avaliação**: Dê notas aos seus plugins favoritos (Ratings).
-- **Tema Dark/Light**: Suporte nativo a temas com persistência.
+- **Plugin Exploration**: Complete list of Obsidian community plugins.
+- **Real-Time Search**: Filter plugins by name, author, or description.
+- **Statistics**: View downloads, stars, and update date.
+- **Rating System**: Rate your favorite plugins.
+- **Dark/Light Theme**: Native theme support with persistence.
 
-## 🔄 Workflow de Desenvolvimento
+## 🔄 Development Workflow
 
-- **Desenvolvimento**: `npm run dev` para iniciar o servidor local.
-- **Banco de Dados**: Use `npm run db:push` para sincronizar alterações no schema.
-- **Build**: `npm run build` gera a exportação estática na pasta `out/`.
-- **Linting**: `npm run lint` para garantir a qualidade do código.
+- **Development**: `npm run dev` to start the local server.
+- **Database**: Use `npm run db:push` to sync schema changes.
+- **Build**: `npm run build` generates the static export in the `out/` folder.
+- **Linting**: `npm run lint` to ensure code quality.
 
-## 📏 Padrões de Código
+## 📏 Code Standards
 
-- **Componentes**: Prefira componentes funcionais e utilize Tailwind CSS 4 para estilização.
-- **Ícones**: Utilize sempre a biblioteca `lucide-react`.
-- **Dados**: Centralize chamadas de API em `src/lib/obsidian-api.ts` e queries em `src/lib/db-queries.ts`.
-- **Segurança**: Nunca exponha segredos no código; utilize variáveis de ambiente.
+- **Components**: Prefer functional components and use Tailwind CSS 4 for styling.
+- **Icons**: Always use the `lucide-react` library.
+- **Data**: Centralize API calls in `src/lib/obsidian-api.ts` and queries in `src/lib/db-queries.ts`.
+- **Security**: Never expose secrets in the code; use environment variables.
 
-## 🧪 Testes
+## 🧪 Testing
 
-Atualmente, o projeto utiliza ESLint para garantir a consistência do código. Testes unitários e de integração estão planejados para versões futuras.
+Currently, the project uses ESLint to ensure code consistency. Unit and integration tests are planned for future versions.
 
-## 🤝 Contribuindo
+## 🤝 Contributing
 
-Contribuições são bem-vindas! Siga os padrões de código estabelecidos e sinta-se à vontade para abrir Pull Requests ou Issues.
+Contributions are welcome! Follow the established code standards and feel free to open Pull Requests or Issues.
 
-1. Faça um Fork do projeto
-2. Crie uma Branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
-4. Push para a Branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
+1. Fork the project
+2. Create a Branch for your feature (`git checkout -b feature/new-feature`)
+3. Commit your changes (`git commit -m 'Add new feature'`)
+4. Push to the Branch (`git push origin feature/new-feature`)
+5. Open a Pull Request
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+This project is under the MIT license. See the [LICENSE](LICENSE) file for more details.

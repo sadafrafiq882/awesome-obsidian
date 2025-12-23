@@ -1,5 +1,6 @@
 import React from 'react';
 import { Star, Download, User, ExternalLink } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface PluginCardProps {
   plugin: {
@@ -13,6 +14,7 @@ interface PluginCardProps {
 }
 
 export function PluginCard({ plugin }: PluginCardProps) {
+  const t = useTranslations('PluginCard');
   return (
     <div className="group relative flex flex-col justify-between rounded-2xl border border-border bg-card/50 p-6 transition-all duration-300 hover:border-accent/30 hover:bg-card hover:shadow-[0_0_40px_-15px_rgba(124,58,237,0.1)] dark:bg-white/[0.02] dark:hover:bg-white/[0.04]">
 
@@ -47,12 +49,12 @@ export function PluginCard({ plugin }: PluginCardProps) {
           </div>
 
           <div className="flex gap-4">
-            <div className="flex items-center gap-1.5" title="Estrelas">
+            <div className="flex items-center gap-1.5" title={t('stars')}>
               <Star size={14} className="text-yellow-500/80" />
               <span className="text-muted">{plugin.stars?.toLocaleString() || 0}</span>
             </div>
             {plugin.downloads && (
-              <div className="flex items-center gap-1.5" title="Downloads">
+              <div className="flex items-center gap-1.5" title={t('downloads')}>
                 <Download size={14} className="text-blue-400/80" />
                 <span className="text-muted">{plugin.downloads.toLocaleString()}</span>
               </div>
@@ -66,7 +68,7 @@ export function PluginCard({ plugin }: PluginCardProps) {
           rel="noopener noreferrer"
           className="flex w-full items-center justify-center gap-2 rounded-xl bg-foreground text-background py-3 text-sm font-bold transition-all hover:bg-accent hover:text-white active:scale-[0.98]"
         >
-          Ver no GitHub
+          {t('viewOnGithub')}
           <ExternalLink size={14} />
         </a>
       </div>

@@ -1,0 +1,39 @@
+{
+  "HomePage": {
+    "badge": "Curadoria de Plugins Obsidian",
+    "title": "Awesome Obsidian",
+    "description": "Eleve seu segundo cérebro com as melhores ferramentas. Uma coleção selecionada para potencializar seu fluxo de trabalho no Obsidian.",
+    "footer": {
+      "copyright": "Awesome Obsidian. Desenvolvido com ❤️ por",
+      "github": "Ver no GitHub"
+    }
+  },
+  "PluginList": {
+    "searchPlaceholder": "Buscar plugins...",
+    "noResults": "Nenhum plugin encontrado.",
+    "loading": "Carregando plugins...",
+    "sort": {
+      "newest": "Mais Recentes",
+      "downloads": "Mais Downloads",
+      "stars": "Mais Estrelas",
+      "name_asc": "Nome (A-Z)",
+      "name_desc": "Nome (Z-A)"
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Próximo",
+      "page": "Página {current} de {total}"
+    }
+  },
+  "PluginCard": {
+    "downloads": "downloads",
+    "stars": "estrelas",
+    "author": "por",
+    "viewOnGithub": "Ver no GitHub"
+  },
+  "LanguageSwitcher": {
+    "label": "Idioma",
+    "en": "Inglês",
+    "pt": "Português"
+  }
+}

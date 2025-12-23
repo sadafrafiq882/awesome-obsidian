@@ -5,11 +5,13 @@ import { useSearchParams } from 'next/navigation';
 import { PluginCard } from './PluginCard';
 import { SearchAndPagination } from './SearchAndPagination';
 import { ObsidianPlugin } from '@/lib/obsidian-api';
+import { useTranslations } from 'next-intl';
 
 const ITEMS_PER_PAGE = 9;
 
 function PluginListContent({ allPlugins }: { allPlugins: ObsidianPlugin[] }) {
   const searchParams = useSearchParams();
+  const t = useTranslations('PluginList');
 
   const query = (searchParams.get('q') || '').toLowerCase();
   const currentPage = Number(searchParams.get('page')) || 1;
@@ -56,7 +58,7 @@ function PluginListContent({ allPlugins }: { allPlugins: ObsidianPlugin[] }) {
           <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-card text-4xl ring-1 ring-border">
             🔍
           </div>
-          <h3 className="mb-2 text-2xl font-semibold text-foreground">Nenhum plugin encontrado</h3>
+          <h3 className="mb-2 text-2xl font-semibold text-foreground">{t('noResults')}</h3>
           <p className="max-w-xs text-muted">
             Não encontramos nada para &quot;{query}&quot;. Tente termos mais genéricos ou verifique a ortografia.
           </p>
@@ -67,8 +69,9 @@ function PluginListContent({ allPlugins }: { allPlugins: ObsidianPlugin[] }) {
 }
 
 export function PluginList({ allPlugins }: { allPlugins: ObsidianPlugin[] }) {
+  const t = useTranslations('PluginList');
   return (
-    <Suspense fallback={<div className="py-20 text-center">Carregando plugins...</div>}>
+    <Suspense fallback={<div className="py-20 text-center">{t('loading')}</div>}>
       <PluginListContent allPlugins={allPlugins} />
     </Suspense>
   );

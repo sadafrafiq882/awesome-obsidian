@@ -1,13 +1,16 @@
 'use client';
 
 import { Search, ChevronLeft, ChevronRight, ArrowUpDown } from 'lucide-react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from '@/i18n/routing';
+import { useSearchParams } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
+import { useTranslations } from 'next-intl';
 
 export function SearchAndPagination({ totalPages }: { totalPages: number }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+  const t = useTranslations('PluginList');
 
   const currentPage = Number(searchParams.get('page')) || 1;
   const currentSort = searchParams.get('sort') || 'newest';
@@ -51,7 +54,7 @@ export function SearchAndPagination({ totalPages }: { totalPages: number }) {
         <input
           id="search"
           className="block w-full rounded-2xl border border-border bg-card/50 py-4 pl-12 pr-4 text-foreground placeholder-muted transition-all focus:border-accent/50 focus:bg-card focus:outline-none focus:ring-4 focus:ring-accent/10 sm:text-sm"
-          placeholder="Buscar por nome, autor ou descrição..."
+          placeholder={t('searchPlaceholder')}
           onChange={(e) => handleSearch(e.target.value)}
           defaultValue={searchParams.get('q')?.toString()}
         />
@@ -69,11 +72,11 @@ export function SearchAndPagination({ totalPages }: { totalPages: number }) {
             value={currentSort}
             onChange={(e) => handleSort(e.target.value)}
           >
-            <option value="newest">Mais Recentes</option>
-            <option value="downloads">Mais Downloads</option>
-            <option value="stars">Mais Estrelas</option>
-            <option value="name_asc">Nome (A-Z)</option>
-            <option value="name_desc">Nome (Z-A)</option>
+            <option value="newest">{t('sort.newest')}</option>
+            <option value="downloads">{t('sort.downloads')}</option>
+            <option value="stars">{t('sort.stars')}</option>
+            <option value="name_asc">{t('sort.name_asc')}</option>
+            <option value="name_desc">{t('sort.name_desc')}</option>
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
             <ChevronRight className="h-4 w-4 rotate-90 text-muted" />

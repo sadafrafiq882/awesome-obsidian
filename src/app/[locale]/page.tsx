@@ -32,7 +32,7 @@ export default async function Home({
         <div className="container relative mx-auto px-4 text-center">
           <div className="mb-8 flex flex-col items-center gap-6">
             <Image
-              src="/obsidian-logo.svg"
+              src="/obsidian-logo-gradient.svg"
               alt="Obsidian Logo"
               width={120}
               height={120}

